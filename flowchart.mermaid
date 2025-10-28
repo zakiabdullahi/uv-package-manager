@@ -1,0 +1,24 @@
+flowchart TB
+    A["🐍 Python Virtual Environment Setup"] --> B1["⚡ Using uv (Modern lightweight manager)"]
+    A --> B2["🐢 Using Anaconda (Traditional environment manager)"]
+
+    %% --- UV Advantages ---
+    B1 --> C1["🚀 1. Ultra-fast environment creation<br/>• Uses Rust backend<br/>• 5–10x faster than venv or conda"]
+    B1 --> C2["📦 2. Lightweight footprint<br/>• No bloated packages<br/>• Only installs what’s needed"]
+    B1 --> C3["🔄 3. Compatible with system Python<br/>• Works with any Python version or pyenv install"]
+    B1 --> C4["🧩 4. Reproducible builds<br/>• Uses lockfiles (uv.lock)<br/>• Ideal for CI/CD and Docker"]
+    B1 --> C5["🌐 5. Works offline<br/>• Caches PyPI wheels locally<br/>• Faster repeated installs"]
+    B1 --> C6["🛠️ 6. Supports PEP 582 and modern tooling<br/>• Works with Hatch, Rye, Poetry seamlessly"]
+
+    %% --- Anaconda Disadvantages (contextual contrast) ---
+    B2 --> D1["🐘 1. Heavy base installation<br/>• >3 GB initial install"]
+    B2 --> D2["🐍 2. Slower environment creation<br/>• Conda solver is slower for dependency resolution"]
+    B2 --> D3["🔒 3. Limited portability<br/>• Envs less portable across OS/Docker"]
+    B2 --> D4["📉 4. Non-standard venv structure<br/>• Not always recognized by pip/PEP tools"]
+    B2 --> D5["💰 5. Commercial licensing for enterprise use<br/>• Some features locked behind paywall"]
+
+    %% --- Conclusion ---
+    C1 & C2 & C3 & C4 & C5 & C6 --> E["🏁 Result: uv is ideal for modern developers<br/>• Faster, smaller, and CI-friendly"]
+    D1 & D2 & D3 & D4 & D5 --> F["⚠️ Result: Anaconda is better for data science suites<br/>• Includes prebuilt tools but heavier"]
+    E --> G["✅ Recommendation: Use uv for dev/CI projects"]
+    F --> G
