@@ -1,0 +1,270 @@
+> Learn UV fast: install, set up a project, add dependencies, manage environments, and ship.
+> 
+
+---
+
+### What is UV?
+
+UV is a fast Python package and project manager by Astral. It unifies Python installation, virtualenvs, dependency management, and task running with a single tool.
+
+- Blazing fast dependency resolution and installs
+- Manages Python versions alongside packages
+- Drop-in commands for everyday workflows
+
+---
+
+### Prerequisites
+
+- A terminal
+- Basic Python knowledge
+
+---
+
+### Install UV
+
+- macOS and Linux:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+- Windows (PowerShell):
+
+```powershell
+iwr https://astral.sh/uv/install.ps1 -UseBasicParsing | iex
+```
+
+- Verify:
+
+```bash
+uv --version
+```
+
+If your shell does not pick it up after install, start a new shell or add UV's bin path to PATH.
+
+---
+
+### Manage Python with UV
+
+UV can install and select Python versions for you.
+
+```bash
+# List available interpreters that UV sees
+uv python list
+
+# Install a specific version
+uv python install 3.12
+
+# Use a specific version for a command
+uv python run -p 3.12 python --version
+```
+
+---
+
+### Start a New Project
+
+```bash
+# Create a new folder and initialize a project with pyproject.toml
+mkdir hello-uv && cd hello-uv
+uv init
+```
+
+This creates a pyproject.toml and default structure.
+
+Create a virtual environment and sync dependencies:
+
+```bash
+uv venv           # creates .venv (or use --python 3.12)
+uv sync           # creates lockfile if missing and installs
+```
+
+---
+
+### Add Dependencies
+
+```bash
+# Add a runtime dependency
+uv add requests
+
+# Add multiple
+uv add fastapi uvicorn
+
+# Add dev-only dependencies
+uv add --dev pytest ruff
+```
+
+UV updates your lockfile and installs into the active environment.
+
+Inspect your dependency graph:
+
+```bash
+uv tree
+```
+
+---
+
+### Run Code and Tools
+
+UV ensures commands run in the right environment.
+
+```bash
+uv run python [main.py](http://main.py)
+uv run pytest -q
+uv run ruff check .
+```
+
+Define reusable scripts in pyproject.toml:
+
+```toml
+[tool.uv.scripts]
+start = "python -m hello_uv"
+test = "pytest -q"
+```
+
+Run them with:
+
+```bash
+uv run start
+uv run test
+```
+
+---
+
+### Locking and Reproducibility
+
+- uv.lock records exact versions
+- uv sync installs exactly what’s locked
+
+Common flows:
+
+```bash
+uv lock                 # refresh lockfile
+uv sync                 # install per lock
+uv sync --frozen        # fail if lock is out of date
+```
+
+Export for non-UV environments:
+
+```bash
+uv export -o requirements.txt
+```
+
+---
+
+### Working With Environments
+
+Create and manage virtualenvs:
+
+```bash
+uv venv                 # create .venv
+uv venv --python 3.11   # use a specific Python
+uv venv --prompt hello  # set a custom prompt name
+```
+
+Activate manually if needed:
+
+- bash/zsh: `source .venv/bin/activate`
+- PowerShell: `.venv\\Scripts\\[Activate.ps](http://Activate.ps)1`
+
+Or just use `uv run` to avoid manual activation.
+
+---
+
+### Add Your First Module
+
+Create a simple module and run it.
+
+```bash
+mkdir -p src/hello_uv
+printf "def greet(name: str) -> str:\n    return f'Hello, {name}!'\n" > src/hello_uv/__init__.py
+printf "from hello_uv import greet\nprint(greet('UV'))\n" > [main.py](http://main.py)
+
+uv run python [main.py](http://main.py)
+```
+
+---
+
+### Testing and Linting
+
+```bash
+uv add --dev pytest ruff
+
+# Test
+uv run pytest -q
+
+# Lint
+uv run ruff check src tests
+```
+
+Optional: configure Ruff and pytest in pyproject.toml for zero-config runs.
+
+---
+
+### Build and Publish (optional)
+
+```bash
+# Build sdist and wheel
+uv build
+
+# Publish to PyPI (set PYPI token in environment first)
+uv publish --username __token__ --password $PYPI_TOKEN
+```
+
+---
+
+### Useful Commands Cheat Sheet
+
+- Project
+    - uv init
+    - uv add <pkg> [--dev]
+    - uv remove <pkg>
+    - uv sync [--frozen]
+    - uv lock
+- Python
+    - uv python list
+    - uv python install <version>
+    - uv python run -p <version> python --version
+- Env
+    - uv venv [--python <ver>]
+    - uv run <cmd>
+- Inspect
+    - uv tree
+    - uv cache dir
+    - uv cache clean
+- Export
+    - uv export -o requirements.txt
+
+---
+
+### Troubleshooting
+
+- Command not found after install: open a new shell or ensure UV’s bin path is on PATH.
+- SSL or network errors: try again with a stable connection. Corporate proxies may require extra settings.
+- Build failures for packages with native extensions: ensure system build tools and Python headers are installed for your OS.
+
+---
+
+### Quick Start in 60 Seconds
+
+```bash
+# 1) Install
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 2) New project
+mkdir demo && cd demo && uv init
+
+# 3) Add deps and run
+uv add requests
+python - <<'PY'
+import requests
+print(requests.get('[https://httpbin.org/status/200').status_code](https://httpbin.org/status/200').status_code))
+PY
+```
+
+---
+
+### Next Steps
+
+- Add scripts for common tasks in [tool.uv.scripts]
+- Set up CI to run `uv sync --frozen` then `uv run test`
+- Use `uv export` if you need requirements.txt for external tooling
