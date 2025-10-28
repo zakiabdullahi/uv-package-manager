@@ -241,26 +241,6 @@ print(requests.get("https://httpbin.org/status/200").status_code)
 PY
 ```
 
----
 
-## 🧭 Next Steps
 
-* Add tasks under `[tool.uv.scripts]`
-* Automate CI/CD with `uv sync --frozen && uv run test`
-* Use `uv export` to integrate with legacy pipelines
 
----
-
-<p align="center">
-  <img src="https://astral.sh/_astro/uv-logo.75b6c215.svg" width="80"><br>
-  <b>Made with 💙 by Astral & the Python community</b><br>
-  <a href="https://astral.sh/uv">https://astral.sh/uv</a>
-</p>
-```
-
----
-
-Would you like me to:
-
-1. 🧾 Add **syntax highlighting and emojis** to the command examples (for better visual flow),
-2. or 🎨 convert this into a **stylized GitHub landing page** (Markdown + HTML hybrid with hero banner and collapsible sections)?
