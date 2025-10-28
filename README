@@ -1,4 +1,4 @@
-````markdown
+
 <h1 align="center">⚡ Learn UV Fast</h1>
 
 <p align="center">
@@ -41,152 +41,120 @@ iwr https://astral.sh/uv/install.ps1 -UseBasicParsing | iex
 
 ### ✅ Verify Installation
 
-```bash
+
 uv --version
-```
+
 
 > 💡 If `uv` isn’t found, open a new terminal or add UV’s bin path to your `PATH`.
 
----
+
 
 ## 🐍 Manage Python Versions
 
-```bash
+
 uv python list               # List installed interpreters
 uv python install 3.12       # Install Python 3.12
 uv python run -p 3.12 python --version
-```
+
 
 UV manages Python itself, so no need for `pyenv` or `conda`!
 
----
+
 
 ## 🏗️ Start a New Project
 
-```bash
+
 mkdir hello-uv && cd hello-uv
 uv init
-```
+
 
 This creates a `pyproject.toml` and initializes your workspace.
 
-```bash
+
 uv venv          # create .venv
 uv sync          # lock and install dependencies
-```
 
----
+
+
 
 ## 📦 Add Dependencies
 
-```bash
+
 uv add requests
 uv add fastapi uvicorn
 uv add --dev pytest ruff
-```
+
 
 View dependency tree:
 
-```bash
-uv tree
-```
 
----
+uv tree
+
+
+
 
 ## ▶️ Run Code & Tools
 
 UV runs commands in the correct virtual environment automatically.
 
-```bash
+
 uv run python main.py
 uv run pytest -q
 uv run ruff check .
-```
+
 
 ### Define Scripts in `pyproject.toml`
 
-```toml
+
 [tool.uv.scripts]
 start = "python -m hello_uv"
 test = "pytest -q"
-```
+
 
 Then run:
 
-```bash
 uv run start
 uv run test
-```
 
----
+
 
 ## 🔒 Locking & Reproducibility
 
-```bash
 uv lock
 uv sync
 uv sync --frozen   # fails if lockfile is outdated
-```
+
 
 Export requirements for non-UV tools:
 
-```bash
-uv export -o requirements.txt
-```
 
----
+uv export -o requirements.txt
+
+
 
 ## 🌱 Virtual Environments
 
-```bash
+
 uv venv
 uv venv --python 3.11
 uv venv --prompt hello
-```
 
-Manual activation (if needed):
 
-* **bash/zsh:** `source .venv/bin/activate`
-* **PowerShell:** `.venv\Scripts\Activate.ps1`
 
-> 💡 Use `uv run` to skip manual activation entirely.
-
----
-
-## 🧩 Add a Simple Module
-
-```bash
-mkdir -p src/hello_uv
-printf "def greet(name):\n    return f'Hello, {name}!'\n" > src/hello_uv/__init__.py
-printf "from hello_uv import greet\nprint(greet('UV'))\n" > main.py
-
-uv run python main.py
-```
-
----
 
 ## 🧪 Testing & Linting
 
-```bash
+
 uv add --dev pytest ruff
 uv run pytest -q
 uv run ruff check src tests
-```
+
 
 Optional: configure both in `pyproject.toml` for zero-config runs.
 
----
 
-## 📦 Build & Publish (Optional)
 
-```bash
-uv build
-uv publish --username __token__ --password $PYPI_TOKEN
-```
 
-> 🔑 Make sure `$PYPI_TOKEN` is exported in your shell.
-
----
 
 ## 🧭 Cheat Sheet
 
@@ -213,26 +181,9 @@ uv publish --username __token__ --password $PYPI_TOKEN
 | SSL / network errors    | Retry with stable connection or proxy config |
 | Build failures          | Install compiler tools and Python headers    |
 
----
 
-## ⚡ Quick Start in 60 Seconds
 
-```bash
-# 1️⃣ Install
-curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# 2️⃣ New project
-mkdir demo && cd demo && uv init
-
-# 3️⃣ Add dependency
-uv add requests
-
-# 4️⃣ Run code
-python - <<'PY'
-import requests
-print(requests.get("https://httpbin.org/status/200").status_code)
-PY
-```
 
 
 
