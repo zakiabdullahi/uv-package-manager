@@ -12,7 +12,6 @@
   <a href="https://python.org"><img src="https://img.shields.io/badge/Python-3.11%2B-green?style=for-the-badge&logo=python&logoColor=white"></a>
 </p>
 
----
 
 ## 🧠 What is UV?
 
@@ -25,13 +24,7 @@ It unifies **Python installation**, **virtual environments**, **dependency manag
 - 🔧 **Drop-in commands** for everyday workflows  
 - 🧰 **Cross-platform** (macOS, Linux, Windows)
 
----
 
-## 🧰 Prerequisites
-- 🖥️ A terminal or PowerShell  
-- 🐍 Basic Python knowledge
-
----
 
 ## 🚀 Installation
 
