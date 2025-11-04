@@ -40,8 +40,10 @@ iwr https://astral.sh/uv/install.ps1 -UseBasicParsing | iex
 
 ### ✅ Verify Installation
 
-
+```bash
 uv --version
+```
+
 
 
 💡 If `uv` isn’t found, open a new terminal or add UV’s bin path to your `PATH`.
