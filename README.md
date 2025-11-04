@@ -44,12 +44,11 @@ iwr https://astral.sh/uv/install.ps1 -UseBasicParsing | iex
 uv --version
 
 
-> 💡 If `uv` isn’t found, open a new terminal or add UV’s bin path to your `PATH`.
+💡 If `uv` isn’t found, open a new terminal or add UV’s bin path to your `PATH`.
 
 
 
 ## 🐍 Manage Python Versions
-
 
 uv python list               # List installed interpreters
 uv python install 3.12       # Install Python 3.12
@@ -57,8 +56,6 @@ uv python run -p 3.12 python --version
 
 
 UV manages Python itself, so no need for `pyenv` or `conda`!
-
-
 
 ## 🏗️ Start a New Project
 
@@ -69,11 +66,8 @@ uv init
 
 This creates a `pyproject.toml` and initializes your workspace.
 
-
 uv venv          # create .venv
 uv sync          # lock and install dependencies
-
-
 
 
 ## 📦 Add Dependencies
@@ -81,15 +75,11 @@ uv sync          # lock and install dependencies
 
 uv add requests
 uv add fastapi uvicorn
-uv add --dev pytest ruff
 
 
 View dependency tree:
 
-
 uv tree
-
-
 
 
 ## ▶️ Run Code & Tools
@@ -98,8 +88,7 @@ UV runs commands in the correct virtual environment automatically.
 
 
 uv run python main.py
-uv run pytest -q
-uv run ruff check .
+
 
 
 ### Define Scripts in `pyproject.toml`
@@ -107,13 +96,11 @@ uv run ruff check .
 
 [tool.uv.scripts]
 start = "python -m hello_uv"
-test = "pytest -q"
 
 
 Then run:
 
 uv run start
-uv run test
 
 
 
@@ -121,7 +108,6 @@ uv run test
 
 uv lock
 uv sync
-uv sync --frozen   # fails if lockfile is outdated
 
 
 Export requirements for non-UV tools:
@@ -136,22 +122,6 @@ uv export -o requirements.txt
 
 uv venv
 uv venv --python 3.11
-uv venv --prompt hello
-
-
-
-
-## 🧪 Testing & Linting
-
-
-uv add --dev pytest ruff
-uv run pytest -q
-uv run ruff check src tests
-
-
-Optional: configure both in `pyproject.toml` for zero-config runs.
-
-
 
 
 
