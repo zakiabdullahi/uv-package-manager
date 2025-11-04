@@ -55,7 +55,7 @@ uv --version
 ```bash
 uv python list               
 uv python install 3.12      
-uv python run -p 3.12 python --version
+uv python run -p 3.12 
 ```
 
 
@@ -64,22 +64,31 @@ UV manages Python itself, so no need for `pyenv` or `conda`!
 
 ## 🏗️ Start a New Project
 
-
+```bash
 mkdir hello-uv && cd hello-uv
 uv init
+```
+
+
 
 
 This creates a `pyproject.toml` and initializes your workspace.
-
+```bash
 uv venv          # create .venv
 uv sync          # lock and install dependencies
+
+```
+
 
 
 ## 📦 Add Dependencies
 
-
+```bash
 uv add requests
 uv add fastapi uvicorn
+```
+
+
 
 
 View dependency tree:
