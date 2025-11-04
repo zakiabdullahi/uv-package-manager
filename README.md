@@ -100,42 +100,50 @@ uv tree
 
 UV runs commands in the correct virtual environment automatically.
 
-
+```bash
 uv run python main.py
+```
+
 
 
 
 ### Define Scripts in `pyproject.toml`
-
 
 [tool.uv.scripts]
 start = "python -m hello_uv"
 
 
 Then run:
-
+```bash
 uv run start
+```
+
 
 
 
 ## 🔒 Locking & Reproducibility
-
+```bash
 uv lock
 uv sync
+```
+
 
 
 Export requirements for non-UV tools:
 
-
+```bash
 uv export -o requirements.txt
+```
+
 
 
 
 ## 🌱 Virtual Environments
 
-
+```bash
 uv venv
 uv venv --python 3.11
+```
 
 
 
