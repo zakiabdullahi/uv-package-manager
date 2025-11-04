@@ -52,9 +52,12 @@ uv --version
 
 ## 🐍 Manage Python Versions
 
+```bash
 uv python list               # List installed interpreters
 uv python install 3.12       # Install Python 3.12
 uv python run -p 3.12 python --version
+```
+
 
 
 UV manages Python itself, so no need for `pyenv` or `conda`!
