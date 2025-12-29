@@ -92,7 +92,7 @@ iwr https://astral.sh/uv/install.ps1 -UseBasicParsing | iex
 ```
 ### ✅ Verify
 
-```bash             
+```          
 uv --version
 ```
 
